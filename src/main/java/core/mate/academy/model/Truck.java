@@ -5,8 +5,6 @@ package core.mate.academy.model;
  * Do not remove no-field constructor
  */
 public class Truck extends Machine {
-    private String name;
-    private String color;
 
     public Truck() {
     }
@@ -16,13 +14,4 @@ public class Truck extends Machine {
         System.out.println("Truck started to work");
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getColor() {
-        return color;
-    }
 }
