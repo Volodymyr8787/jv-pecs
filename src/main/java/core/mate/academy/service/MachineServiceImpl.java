@@ -1,7 +1,12 @@
 package core.mate.academy.service;
 
-import core.mate.academy.model.*;
-
+import core.mate.academy.model.Bulldozer;
+import core.mate.academy.model.BulldozerProducer;
+import core.mate.academy.model.Excavator;
+import core.mate.academy.model.ExcavatorProducer;
+import core.mate.academy.model.Machine;
+import core.mate.academy.model.Truck;
+import core.mate.academy.model.TruckProducer;
 import java.util.List;
 
 /**
@@ -9,7 +14,7 @@ import java.util.List;
  */
 public class MachineServiceImpl<T extends Machine> implements MachineService<T> {
     @Override
-    public List<T> getAll(Class<? extends Machine> type) {
+    public List<T> getAll(Class<? extends T> type) {
         if (type == Bulldozer.class) {
             MachineProducer<Bulldozer> producer = new BulldozerProducer();
             return (List<T>) producer.get();
@@ -18,10 +23,11 @@ public class MachineServiceImpl<T extends Machine> implements MachineService<T> 
             MachineProducer<Truck> producer = new TruckProducer();
             return (List<T>) producer.get();
         }
-        if (type == Excavator) {
+        if (type == Excavator.class) {
             MachineProducer<Excavator> producer = new ExcavatorProducer();
             return (List<T>) producer.get();
         }
+        return new java.util.ArrayList<>();
     }
 
     @Override
@@ -29,7 +35,6 @@ public class MachineServiceImpl<T extends Machine> implements MachineService<T> 
         for (int i = 0; i < machines.size(); i++) {
             machines.set(i, value);
         }
-
     }
 
     @Override
@@ -37,7 +42,7 @@ public class MachineServiceImpl<T extends Machine> implements MachineService<T> 
         for (T machine : machines) {
             machine.doWork();
         }
-
     }
 
 }
+
